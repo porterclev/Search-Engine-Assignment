@@ -2,6 +2,12 @@
 # AUTHOR: Porter Cleivdence
 # FILENAME: search_engine.
 # SPECIFICATION: 
+# Score of the documents with respect to the query q = “I love dogs”. 
+#   Requirements:
+#   perform tokenization, surface-level normalization, stopping (pronouns, conjunctions, and articles),
+#   and stemming; construct the term vocabulary using word unigrams followed by word bigrams, with
+#   terms ordered alphabetically within each group; represent queries and documents using binary (0/1)
+#   term weights; rank the documents according to their scores.
 # FOR: CS 5180- Assignment #1
 # TIME SPENT: 1 hour
 #-----------------------------------------------------------*/
