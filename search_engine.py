@@ -29,7 +29,7 @@ with open('collection.csv', 'r') as csvfile:
 # ---------------------------------------------------------
 # --> add your Python code here
 
-print(?)
+print(documents)
 
 # ---------------------------------------------------------
 # Instantiate CountVectorizer informing 'word' as the analyzer, Porter stemmer as the tokenizer, stop_words as the identified stop words,
@@ -37,15 +37,15 @@ print(?)
 # ---------------------------------------------------------
 # --> add your Python code here
 
-vectorizer = ?
+vectorizer = CountVectorizer()
 
 # ---------------------------------------------------------
 # Fit the vectorizer to the documents and encode the them
 # ---------------------------------------------------------
 # --> add your Python code here
 
-vectorizer.fit(?)
-document_matrix = vectorizer.transform(?)
+vectorizer.fit(documents)
+document_matrix = vectorizer.transform(documents)
 
 # ---------------------------------------------------------
 # Inspect vocabulary
@@ -57,8 +57,8 @@ print("Vocabulary:", vectorizer.get_feature_names_out().tolist())
 # ---------------------------------------------------------
 # --> add your Python code here
 
-query = ?
-query_vector = vectorizer.transform(?)
+query = ""
+query_vector = vectorizer.transform(query)
 
 # ---------------------------------------------------------
 # Convert matrices to plain Python lists
