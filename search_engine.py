@@ -18,7 +18,7 @@
 import csv
 from sklearn.feature_extraction.text import CountVectorizer
 from nltk.stem import PorterStemmer
-
+import re
 documents = []
 
 # ---------------------------------------------------------
@@ -42,10 +42,13 @@ print(documents)
 # unigrams and bigrams as the ngram_range, and binary representation as the weighting scheme
 # ---------------------------------------------------------
 # --> add your Python code here
+def tokenize(text):
+    tokens = re.findall(r"[a-z]+", text.lower())   # keeps words only
+    return [PorterStemmer().stem(t) for t in tokens]
 
 vectorizer = CountVectorizer(
     analyzer='word',
-    tokenizer=lambda text: [PorterStemmer().stem(token) for token in text.lower().split()],
+    tokenizer=tokenize,
     stop_words='english',
     ngram_range=(1, 2),
     binary=True
