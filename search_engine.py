@@ -1,6 +1,6 @@
 #-------------------------------------------------------------
-# AUTHOR: your name
-# FILENAME: title of the source file
+# AUTHOR: Porter Cleivdence
+# FILENAME: search_engine.
 # SPECIFICATION: description of the program
 # FOR: CS 5180- Assignment #1
 # TIME SPENT: how long it took you to complete the assignment
@@ -37,7 +37,13 @@ print(documents)
 # ---------------------------------------------------------
 # --> add your Python code here
 
-vectorizer = CountVectorizer()
+vectorizer = CountVectorizer(
+    analyzer='word',
+    tokenizer=lambda text: [PorterStemmer().stem(token) for token in text.lower().split()],
+    stop_words='english',
+    ngram_range=(1, 2),
+    binary=True
+)
 
 # ---------------------------------------------------------
 # Fit the vectorizer to the documents and encode the them
@@ -57,7 +63,7 @@ print("Vocabulary:", vectorizer.get_feature_names_out().tolist())
 # ---------------------------------------------------------
 # --> add your Python code here
 
-query = "their dog"
+query = "I love a dog"
 query_vector = vectorizer.transform([query])
 
 # ---------------------------------------------------------
@@ -68,19 +74,27 @@ query_vector = vectorizer.transform([query])
 doc_vectors = document_matrix.toarray()
 query_vector = query_vector.toarray()
 
-print(doc_vectors)
-print(query_vector)
-
 # ---------------------------------------------------------
 # Compute dot product
 # ---------------------------------------------------------
 
 scores = []
 # --> add your Python code here
+for doc_index, doc in enumerate(doc_vectors):
+    dot_prd = 0
+    for i, e in enumerate(doc):
+        dot_prod += e * query_vector[0][i]
 
+    scores.append((dot_prod, documents[doc_index]))
+
+
+# for score in scores:
+#   print(score)
 # ---------------------------------------------------------
 # Sort documents by score (descending)
 # ---------------------------------------------------------
 
 ranking = []
-# --> add your Python code here
+ranking = sorted(scores, key=lambda x: x[0], reverse=True)
+for score, doc in ranking:
+    print(score, "->", doc)
