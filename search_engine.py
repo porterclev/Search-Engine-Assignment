@@ -1,9 +1,9 @@
 #-------------------------------------------------------------
 # AUTHOR: Porter Cleivdence
 # FILENAME: search_engine.
-# SPECIFICATION: description of the program
+# SPECIFICATION: 
 # FOR: CS 5180- Assignment #1
-# TIME SPENT: how long it took you to complete the assignment
+# TIME SPENT: 1 hour
 #-----------------------------------------------------------*/
 
 # ---------------------------------------------------------
@@ -77,9 +77,9 @@ query_vector = query_vector.toarray()
 # ---------------------------------------------------------
 # Compute dot product
 # ---------------------------------------------------------
+# --> add your Python code here
 
 scores = []
-# --> add your Python code here
 for doc_index, doc in enumerate(doc_vectors):
     dot_prd = 0
     for i, e in enumerate(doc):
@@ -87,12 +87,10 @@ for doc_index, doc in enumerate(doc_vectors):
 
     scores.append((dot_prod, documents[doc_index]))
 
-
-# for score in scores:
-#   print(score)
 # ---------------------------------------------------------
 # Sort documents by score (descending)
 # ---------------------------------------------------------
+# --> add your Python code here
 
 ranking = []
 ranking = sorted(scores, key=lambda x: x[0], reverse=True)
