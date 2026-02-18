@@ -57,16 +57,19 @@ print("Vocabulary:", vectorizer.get_feature_names_out().tolist())
 # ---------------------------------------------------------
 # --> add your Python code here
 
-query = ""
-query_vector = vectorizer.transform(query)
+query = "their dog"
+query_vector = vectorizer.transform([query])
 
 # ---------------------------------------------------------
 # Convert matrices to plain Python lists
 # ---------------------------------------------------------
 # --> add your Python code here
 
-doc_vectors = ?
-query_vector = ?
+doc_vectors = document_matrix.toarray()
+query_vector = query_vector.toarray()
+
+print(doc_vectors)
+print(query_vector)
 
 # ---------------------------------------------------------
 # Compute dot product
