@@ -87,7 +87,7 @@ query_vector = query_vector.toarray()
 
 scores = []
 for doc_index, doc in enumerate(doc_vectors):
-    dot_prd = 0
+    dot_prod = 0
     for i, e in enumerate(doc):
         dot_prod += e * query_vector[0][i]
 
